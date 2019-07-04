@@ -2,11 +2,22 @@
 const express = require('express');
 // cookieParser用来读取cookie的
 const cookieParser = require('cookie-parser');
+
 let server = express();
+
+
 // cookie
-server.use(cookieParser());
+server.use(cookieParser('987987987qweqweqwe'));
+
 server.use('/', function (req, res) {
-   console.log(req.cookies);
+   req.secret='987987987qweqweqwe';
+   res.cookie('user','lidecai',{signed:true});
+
+
+   console.log("签名的",req.signedCookies);
+
+    console.log("无签名的",req.cookies);
+ 
     res.send('11112222');
 });
 
