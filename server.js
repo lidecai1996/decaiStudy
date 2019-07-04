@@ -1,12 +1,12 @@
 //引入express框架
 const express = require('express');
-
+// cookieParser用来读取cookie的
+const cookieParser = require('cookie-parser');
 let server = express();
 // cookie
-
+server.use(cookieParser());
 server.use('/', function (req, res) {
-    // 设置cookie的键值，和专用目录，还设置了有效期
-    res.cookie('user','lidecai',{path:'/aaa',maxAge:10*1000});
+   console.log(req.cookies);
     res.send('11112222');
 });
 
