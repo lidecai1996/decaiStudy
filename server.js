@@ -10,14 +10,8 @@ let server = express();
 server.use(cookieParser('987987987qweqweqwe'));
 
 server.use('/', function (req, res) {
-   req.secret='987987987qweqweqwe';
-   res.cookie('user','lidecai',{signed:true});
-
-
-   console.log("签名的",req.signedCookies);
-
-    console.log("无签名的",req.cookies);
- 
+   res.clearCookie('user');
+   
     res.send('11112222');
 });
 
