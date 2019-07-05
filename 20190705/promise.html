@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 异步请求嵌套两个setTimeout回调函数
+  // setTimeout(() => {
+  //     console.log('hello');
+  //     setTimeout(() => {
+  //         console.log('hi')
+  //     }, 3000)
+  // }, 3000)
+
+  // 使用es6异步请求
+  // let a = 1;
+
+  // let promise = new Promise(function (resolve, reject) {
+  //     if (a == 10) {
+  //         console.log('成功')
+  //     } else {
+  //         console.log('失败')
+  //     }
+  // }).then(res => {
+  //     console.log(res);
+  // }, err => {
+  //     console.log(err);
+  // })
+
+
+  //   function pass(){
+  //     return new Promise((resolve,reject)=>{
+  //       setTimeout(()=>{
+  //         resolve();
+  //       },1000)
+  //     })
+  //   }
+
+
+  // pass().then(()=>{
+  //   for(let a = 0;a<1000;a++){
+  //   a+=a;
+  //   console.log(a);
+  //   return pass();
+  //   }
+
+  // })
+
+  const fs = require('fs');
+  const promisify = require('util').promisify;
+  const readFile = promisify(fs.readFile);
+
+  async function rf() {
+    const data = await readFile('./1.txt');
+
+    console.log(data.toString());
+
+  }
+
+  rf();
+
+</script>
+
+</html>
